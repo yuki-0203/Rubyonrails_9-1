@@ -1,3 +1,4 @@
 class HomesController < ApplicationController
-  get "/" => "home#top"
+def top
+end
 end
