@@ -1,11 +1,14 @@
 <h1>Editing Book</h1>
 <!-- form_with部分 -->
-<% if @book.errors.any? %>
-  <%= @book.errors.count %>errors prohibited this book from being saved:
-  <% @book.errors.full_messages.each do |message| %>
-    <%= message %>
+<div class="errors">
+ <% if @book.errors.any? %>
+  <%= @book.errors.count %> errors prohibited this book from being saved:
+ <ul><% @book.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
   <% end %>
+   </ul>
 <% end %>
+</div>
 <%= form_with model:@book, local: true do |f| %>
   <h4>title</h4>
   <%= f.text_field :title %>
@@ -14,4 +17,5 @@
   <%= f.submit 'Update Book' %>
 <% end %>
 <%= link_to "show", book_path(@book.id) %>
+|
 <%= link_to "back", books_path %>
